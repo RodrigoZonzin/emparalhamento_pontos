@@ -11,5 +11,5 @@ vetor.o: vetor.h vetor.c ponto.o
 	gcc -c vetor.c  
 
 remove:
-	rm *.o programa
+	rm *.o main
 
