@@ -10,6 +10,7 @@ ponto.o: ponto.h ponto.c
 vetor.o: vetor.h vetor.c ponto.o
 	gcc -c vetor.c  
 
-remove:
-	rm *.o main
+clear:
+	rm *.o main 
+	rm *.txt
 

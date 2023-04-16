@@ -85,9 +85,9 @@ int analisa_todos_os_pontos(Ponto **pts, int N, Ponto *A, Ponto *B){
     int maior = 0; 
 
     for(int i = 0; i<N; i++){
-        int dentro = contar_pontos_subjacentes(pts, A, B, i+1); 
+        int aux = contar_pontos_subjacentes(pts, A, B, i+1); 
 
-        if(!dentro){
+        if(!aux){
             pts[i]->tag = 1; 
         }
         else{
