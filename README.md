@@ -33,7 +33,8 @@ Se sabemos as componentes *x e y* de Q e P em uma base qualquer de $E^3$, podemo
 
 Usamos esse resultado pois sabemos da álgebra linear que dado dois vetores $\vec{u}, \vec{v} \in V^3$, o produto vetorial euclidiano $\vec{u} \times \vec{v}$ determina a área do paralelogramo contido entre eles. \citet{anton2012}. Calcular área de um triângulo é algo primordial para uma de nossas funções.
 
-Para determinamos se um ponto $p_i$ está dentro de um triângulo $\Delta ABP$, verificamos se $| \Delta ABP | = |\Delta APp_i| + |\Delta ABp_i| + |\Delta PBp_i|$.
+Para determinamos se um ponto $p_i$ está dentro de um triângulo $\Delta ABP$, verificamos se 
+$$| \Delta ABP | = |\Delta APp_i| + |\Delta ABp_i| + |\Delta PBp_i|$$
 
 Com o resultado anterior, basta fazer o produto vetorial dos três vetores e verificar o valor se suas somas é igual ao produto vetorial do triângulo mais externo. 
 
@@ -47,6 +48,17 @@ $$| \Delta PBp_i | = \vec{Bp_i} \times \vec{Pp_i} $$
 
 Se $| \Delta ABP |$ for igual à soma dos demais vetoriais, então sabemos que o ponto $p_i$ está contido em $\Delta ABP$.\\
 
+### Complexidade
+O comportamento da curva condiz com um programa de complexidade $O(n^2)$. Obtivemos a função de regressão descrita a seguir, com a não significância de $\beta_0$ e $\beta_1$ ao nível de $0,05$: 
+$$\hat{f}(n) = 8,830528\cdot 10^{-8}n^2 \ (em \ segundos)$$
+$$R^2 = 0.9982$$
+
+#### Tempo de execução para o maior caso de teste é muito grande
+
+Se tomarmos o tempo das 10 mil primeiras execuções, encontramos o tempo total que duraria o teste. Como estimamos a função de complexidade $\hat{f}(n)$, podemos integrar no intervalo descrito e assim sabemos que o tempo gasto seria da seguinte ordem: 
+$$\int_{0}^{10k} \hat{f}(n) \ dn = 8h10min$$.
+
+![Modelagem da Complexidade Assintótica](arquivosAnalise/plot_regressao200.png)
 
 
 
