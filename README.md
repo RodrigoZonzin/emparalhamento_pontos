@@ -7,32 +7,13 @@ Pela definição do problema, garantimos as seguintes restrições: $0 < p_x$ e 
 
 ### Natureza geométrica do problema
 
-Determinar se dois segmentos de reta se interceptam é um problema clássico de geometria computacional \citep{Cormen2009}. Um algoritmo que implementa uma técnica para resolvê-lo é conhecido como \textit{Varredura}.  
-
-Nossa abordagem, no entanto, se baseia em conclusões geométricas a respeito da avaliação de um triângulo determinado pelos pontos-âncora e um ponto genérico $p \in \mathbb{P}$. 
-
-A imagem a seguir, mostra os pontos de um conjunto $\mathbb{P}_1 = \{C(3,4), D(3,2), E(7,4)\}$. Para determinarmos se há intersecção entre os pontos $C$ e $E$, olhamos para o os triângulos determinados pelos pontos $ACB$ e $AEB$. A intersecção acontecerá se o ponto $E$ não estiver contido no triângulo $ACB$ \textbf{ou} se o ponto $C$ não estiver contido no triângulo $AEB$.
-
-Se fixarmos o ponto $D$ e compararmo-lo aos pontos $C$ e $E$, temos que $D \subset ACB$ e $D \not\subset AEB$.
-
+Pontos
 ![Conjuntos de pontos P1](arquivosAnalise/intro_pontos.png)
 
-Perceba, no entanto, que contar quantos pontos um triângulo $\Delta ABp_i$ contém e tomar o máximo dentre todas as possibilidades não é suficiente, uma vez que dois pontos $p_1$ e $p_2$ podem não formar uma sequência entre si. A imagem a seguir ilustra essa situação. 
+Restrição
 
 ![Conjunto de pontos que não satisfazem a proposta de abordagem](arquivosAnalise/pontos_que_restrigem.png)
 
-Os pontos $D$ e $E$ não formam uma sequência válida entre si. Se contássemos quantos pontos $\Delta ABC$ contém, encontraríamos 2 como resposta. No entanto, há apenas um arranjo que respeita nossa restrição.  
-
-Para solucionar esse problema, adotamos a seguinte abordagem: para um ponto genérico $p_i$, contamos quantos pontos subjacentes (\textit{i.e.}, contidos em $\Delta ABp_i$) ele contém. Se ele não contém nenhum, adicionamos uma flag em $p_i$ que passa a valer 1 (uma sequência válida). Por outro lado, se ele contém pelo menos um ponto abaixo de si, analisamo-o com todos os pontos anteriores $p_j tal \ que \ 0 < j < i$. Se $p_j$ está dentro de $p_i$, setamos uma variável auxiliar que vale $1 + p_j.tag$ (todas as sequências válidas mais essa). Se a variável auxiliar for maior do que a tag do ponto $p_i$, então atualizamo-a com o valor da variável auxiliar. 
-
-Por fim, analisamos para o ponto $p_i$ se sua tag é maior do que o a sequência máxima até aquele momento. Caso seja, a sequência máxima passa ser a tag do ponto $p_i$. 
-
-
-### Estruturas de Dados
-Para modelarmos o problema, utilizamos os Tipos Abstratos de Dados apresentados na figura 3.
-
-![TAD Ponto](arquivosAnalise/ponto.png)
-![TAD Vetor](arquivosAnalise/vetor.png)
 
 O TAD Ponto é o principal tipo utilizado no programa. Essa acepção não só é verdadeira, como elegante, já que dos postulados euclidianos, sabemos: 
 
@@ -43,7 +24,7 @@ O TAD Ponto é o principal tipo utilizado no programa. Essa acepção não só �
   		Dessa definição e de outros postulados segue a famosa expressão: \textit{``três pontos não todos colineares determinam um triângulo"}.
 
 
-Outra estrutura de dados importante é o tipo Vetor. De acordo com \citet{boulos2010}, a cada ponto $P \in E^3$ e a cada vetor $\vec{v} \in V^3$, a soma de $P$ com $\vec{v}$ é definida em termos de um único representante de $\vec{v} \in V^3$: o segmento orientado $(P, Q)$. Segue: 
+De acordo com Boulos (2010), a cada ponto $P \in E^3$ e a cada vetor $\vec{v} \in V^3$, a soma de $P$ com $\vec{v}$ é definida em termos de um único representante de $\vec{v} \in V^3$: o segmento orientado $(P, Q)$. Segue: 
 	$$P + \overline{PQ} = Q$$	
 	$$P + \vec{v} = Q$$
 Somando $-P$ dos dois lados, temos: 
@@ -57,6 +38,7 @@ Para determinamos se um ponto $p_i$ está dentro de um triângulo $\Delta ABP$, 
 Com o resultado anterior, basta fazer o produto vetorial dos três vetores e verificar o valor se suas somas é igual ao produto vetorial do triângulo mais externo. 
 
 ![Produtos vetoriais](arquivosAnalise/prod_vetorial.png)
+
 Note que: 
 $$| \Delta ABP | = \vec{AP} \times \vec{BP} $$
 $$| \Delta ABp_i | = \vec{Ap_i} \times \vec{Pp_i} $$
