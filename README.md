@@ -33,7 +33,7 @@ Se sabemos as componentes *x e y* de Q e P em uma base qualquer de $E^3$, podemo
 
 Usamos esse resultado pois sabemos da álgebra linear que dado dois vetores $\vec{u}, \vec{v} \in V^3$, o produto vetorial euclidiano $\vec{u} \times \vec{v}$ determina a área do paralelogramo contido entre eles. \citet{anton2012}. Calcular área de um triângulo é algo primordial para uma de nossas funções.
 
-Para determinamos se um ponto $p_i$ está dentro de um triângulo $\Delta ABP$, verificamos se $| \Delta ABP |\footnote{Notação: $|\Delta A| =$ área do triângulo A} = |\Delta APp_i| + |\Delta ABp_i| + |\Delta PBp_i|$.
+Para determinamos se um ponto $p_i$ está dentro de um triângulo $\Delta ABP$, verificamos se $| \Delta ABP | = |\Delta APp_i| + |\Delta ABp_i| + |\Delta PBp_i|$.
 
 Com o resultado anterior, basta fazer o produto vetorial dos três vetores e verificar o valor se suas somas é igual ao produto vetorial do triângulo mais externo. 
 
